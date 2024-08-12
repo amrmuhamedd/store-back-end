@@ -27,6 +27,6 @@ export const verifyAndDecodeToken = (token) => {
 
 export function generateAuthToken(payload) {
   return jwt.sign(payload, process.env.SECRET_KEY, {
-    expiresIn: "1h",
+    expiresIn: "24h",
   });
 }

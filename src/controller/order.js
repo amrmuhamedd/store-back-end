@@ -9,13 +9,11 @@ export async function createOrUpdateOrder({
   user,
 }) {
   try {
+    const orderValues = { price, status, amount, user };
     const order = await OrderModel.findOneAndUpdate(
       { orderId: merchantOrderId },
       {
-        price: amount,
-        status,
-        items: cart,
-        user: new mongoose.Types.ObjectId(user._id),
+        ...orderValues,
       },
       {
         new: true, // Return the modified document
@@ -37,6 +35,43 @@ export const getOrders = async (req, res) => {
       select: "name _id email",
     });
     res.status(200).json(orders);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
+export const getOrderById = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const order = await OrderModel.findOne({ orderId: id }).populate({
+      path: "user",
+      select: "name _id email",
+    });
+
+    if (!order) {
+      return res.status(404).json({ error: "Order not found" });
+    }
+
+    res.status(200).json(order);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
+export const getUserOrders = async (req, res) => {
+  try {
+    const userId = req.user._id;
+    console.log({ userId });
+    const order = await OrderModel.find({ user: userId }).populate({
+      path: "user",
+      select: "name _id email",
+    });
+
+    if (!order) {
+      return res.status(404).json({ error: "Order not found" });
+    }
+
+    res.status(200).json(order);
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
