@@ -1,20 +1,20 @@
 import axios from "axios";
 
 export async function createInvoice(req, res) {
-  await axios
-    .post(
+  try {
+    const response = await axios.post(
       "https://test-api.kashier.io/paymentRequest?currency=EGP",
-      {
-        ...req.body,
-      },
+      req.body,
       {
         headers: {
-          Authorization: `${process.env.KASHIER_SECERT}`,
+          Authorization: `${process.env.KASHIER_SECRET}`,
         },
       }
-    )
-    .then((response) => {
-      console.log(response.data);
-      res.json(response.data);
-    });
+    );
+
+    res.json(response.data);
+  } catch (error) {
+    console.error("Error creating invoice:", error);
+    res.status(500).json({ error: "Failed to create invoice" });
+  }
 }
