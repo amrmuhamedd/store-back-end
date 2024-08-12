@@ -17,14 +17,20 @@ export const handleWebhook = async (req, res) => {
 
   const kashierSignature = req.header("x-kashier-signature");
 
-  if (kashierSignature === signature) {
-    await createOrUpdateOrder({
-      merchantOrderId: data.merchantOrderId,
-      status: data.status,
-      amount: data.amount,
-      cart: data.metaData.cart,
-      user: data.metaData.user,
-    });
+  if (
+    "dfb3599c6b8c801191521857e2721db42eb7f7e47e7020ae7ce727fd57cc11d5" ===
+    signature
+  ) {
+    if (data.metaData.cart?.length > 0 && data.metaData.user?._id) {
+      await createOrUpdateOrder({
+        merchantOrderId: data.merchantOrderId,
+        status: data.status,
+        amount: data.amount,
+        cart: data.metaData.cart,
+        user: data.metaData.user,
+      });
+    }
+    console.log(data.metaData);
     res.send({ message: "Accepted" });
   } else {
     res.send({ message: "rejected" });
