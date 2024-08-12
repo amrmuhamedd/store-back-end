@@ -9,11 +9,13 @@ export async function createOrUpdateOrder({
   user,
 }) {
   try {
-    const orderValues = { price, status, amount, user };
     const order = await OrderModel.findOneAndUpdate(
       { orderId: merchantOrderId },
       {
-        ...orderValues,
+        price: amount,
+        status,
+        items: cart,
+        user: new mongoose.Types.ObjectId(user._id),
       },
       {
         new: true, // Return the modified document
