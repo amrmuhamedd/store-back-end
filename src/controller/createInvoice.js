@@ -7,7 +7,7 @@ export async function createInvoice(req, res) {
       req.body,
       {
         headers: {
-          Authorization: `${process.env.KASHIER_SECRET}`,
+          Authorization: `${process.env.KASHIER_SECERT}`,
         },
       }
     );

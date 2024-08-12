@@ -214,7 +214,7 @@ const router = express.Router();
  *           type: string
  *           example: SUCCESS
  *
- * api/invoices:
+ * /api/invoices:
  *   post:
  *     summary: Create a new invoice
  *     tags: [Invoices]
