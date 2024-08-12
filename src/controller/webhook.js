@@ -17,10 +17,7 @@ export const handleWebhook = async (req, res) => {
 
   const kashierSignature = req.header("x-kashier-signature");
 
-  if (
-    "dfb3599c6b8c801191521857e2721db42eb7f7e47e7020ae7ce727fd57cc11d5" ===
-    signature
-  ) {
+  if (kashierSignature === signature) {
     if (data.metaData.cart?.length > 0 && data.metaData.user?._id) {
       await createOrUpdateOrder({
         merchantOrderId: data.merchantOrderId,
