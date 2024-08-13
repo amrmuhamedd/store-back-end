@@ -20,7 +20,7 @@
     "mongoose": "^8.5.2",
     "query-string": "^9.1.0",
     "swagger-jsdoc": "^6.2.8",
-    "swagger-ui-express": "^5.0.1",
+    "swagger-ui-express": "4.6.2",
     "underscore": "^1.13.7",
     "uuid": "^10.0.0"
   }

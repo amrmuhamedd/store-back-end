@@ -14,7 +14,16 @@ import invoicesRouter from "./routes/invoice.js";
 const app = express();
 app.use(cors());
 app.use(express.json());
-app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(specs));
+app.use(
+  "/api-docs",
+  swaggerUi.serve,
+  swaggerUi.setup(specs, {
+    customCss:
+      ".swagger-ui .opblock .opblock-summary-path-description-wrapper { align-items: center; display: flex; flex-wrap: wrap; gap: 0 10px; padding: 0 10px; width: 100%; }",
+    customCssUrl:
+      "https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.1.0/swagger-ui.min.css",
+  })
+);
 app.use("/api/auth/", AuthRouter);
 app.use("/api/webhook/", webhookRouter);
 app.use("/api/orders/", ordersRouter);
