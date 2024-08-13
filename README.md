@@ -6,8 +6,6 @@ Welcome to the store REST API documentation. This API allows users to register, 
 
 ![image](https://github.com/user-attachments/assets/cea0dc8f-0488-47be-b148-051e7ae92357)
 
-
-
 ## Tech Stack
 
 The Blog REST API is built using the following technologies:
@@ -17,8 +15,6 @@ The Blog REST API is built using the following technologies:
 - **MongoDB**: nosql database.
 - **JWT (JSON Web Tokens)**: For secure authentication and authorization.
 - **Swagger**: For API documentation.
-
-
 
 ### Project Structure
 
@@ -40,6 +36,8 @@ Follow these instructions to run the project locally using Node js:
    git clone <repository_url>
    cd <project_directory>
 
+   ```
+
 1. Create a .env file in the project root and configure the following environment variables:
 
 ```bash
@@ -49,33 +47,38 @@ KASHIER_PAYMENTAPIKEY= get api from kashier.io
 KASHIER_MID = get MID from kashier.io
 KASHIER_SECERT = get secret from kashier.io
 ```
+
 2. install debndaceis
 
 ```bash
 yarn install
 ```
-3. Run database migrations: 
+
+3. Run database migrations:
+
 ```bash
 yarn migrate
 ```
 
 4. Start the development server:
-   
+
 ```bash
 yarn dev
 ```
 
 Now you can see your API docs at: `http://localhost:5000/api-docs/#/`
 
+## live preview
 
-## live preview 
+you can see the live preview [here](https://store-back-end-silk.vercel.app/api-docs) . Please note that the initial launch of the documentation may be a bit slow as it is hosted on a free hosting plan.
 
-you can see the live preview [here](https://store-back-end-7v7c.onrender.com/api-docs/#/) . Please note that the initial launch of the documentation may be a bit slow as it is hosted on a free hosting plan.
+## Front end
 
-## Front end 
 repo : https://github.com/amrmuhamedd/store-front-end
 live preview: https://store-front-end-rouge.vercel.app/
-## At the end 
+
+## At the end
+
 Please refer to the Swagger documentation for detailed information on each endpoint and how to use them.
 
 If you have any questions or encounter issues, feel free to reach out for assistance. Happy coding!
