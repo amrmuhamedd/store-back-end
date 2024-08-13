@@ -6,7 +6,7 @@ const router = express.Router();
 /**
  * @swagger
  * tags:
- *   - name: invoice
+ *   - name: Invoices
  *     description: to create invoice
  */
 
