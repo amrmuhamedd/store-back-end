@@ -218,6 +218,7 @@ const router = express.Router();
  *   post:
  *     summary: Create a new invoice
  *     tags: [Invoices]
+ *     security: []
  *     requestBody:
  *       required: true
  *       content:

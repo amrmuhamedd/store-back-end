@@ -23,6 +23,7 @@ const router = express.Router();
  *     summary: Register a new user
  *     tags:
  *       - Authentication
+ *     security: []
  *     requestBody:
  *       required: true
  *       content:
@@ -60,6 +61,7 @@ router.post("/register", Register);
  *     summary: Authenticate a user and generate a JWT token
  *     tags:
  *       - Authentication
+ *     security: []
  *     requestBody:
  *       required: true
  *       content:

@@ -14,9 +14,10 @@ const router = express.Router();
  * @swagger
  * /api/webhook/kashier-webhook:
  *   post:
- *     summary: recieve webhook from kashier
+ *     summary: receive webhook from kashier
  *     tags:
  *       - webhook
+ *     security: []
  *     requestBody:
  *       required: true
  *       content:
@@ -25,7 +26,7 @@ const router = express.Router();
  *             type: object
  *     responses:
  *       '200':
- *         description: recieved
+ *         description: received
  *         content:
  *           application/json:
  *             schema:
@@ -33,8 +34,9 @@ const router = express.Router();
  *               properties:
  *                 message:
  *                   type: string
- *                   example: recieved successfuly
+ *                   example: received successfully
  */
+
 router.post("/kashier-webhook", handleWebhook);
 
 export default router;
