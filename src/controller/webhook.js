@@ -5,11 +5,12 @@ import queryString from "query-string";
 
 export const handleWebhook = async (req, res) => {
   const { data, event } = req.body;
+  console.log({ data, event });
   data.signatureKeys.sort();
   const objectSignaturePayload = _.pick(data, data.signatureKeys);
-
+console.log(objectSignaturePayload)
   const signaturePayload = queryString.stringify(objectSignaturePayload);
-
+console.log(signaturePayload)
   const signature = crypto
     .createHmac("sha256", process.env.KASHIER_PAYMENTAPIKEY)
     .update(signaturePayload)
